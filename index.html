@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Design Jargon for Dummies</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Permanent+Marker&family=DM+Sans:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a2e;
+    --paper: #fdf6e3;
+    --yellow: #FFD60A;
+    --pink: #FF6B9D;
+    --teal: #00C9B1;
+    --orange: #FF7043;
+    --purple: #7B5EA7;
+    --blue: #3A86FF;
+    --red: #EF233C;
+    --green: #06D6A0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba(255,214,10,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(255,107,157,0.08) 0%, transparent 40%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a1a2e' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* HEADER */
+  .header {
+    background: var(--ink);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 5px solid var(--yellow);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -50px; left: -50px;
+    width: 200px; height: 200px;
+    background: var(--yellow);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: 10%;
+    width: 150px; height: 150px;
+    background: var(--pink);
+    border-radius: 50%;
+    opacity: 0.1;
+  }
+
+  .header-badge {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--ink);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 2px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    transform: rotate(-1deg);
+    display: inline-block;
+  }
+
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 7vw, 5.5rem);
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+  }
+
+  .header h1 span {
+    color: var(--yellow);
+    display: block;
+    line-height: 1.05;
+  }
+
+  .header h1 em {
+    font-style: normal;
+    color: var(--pink);
+    display: block;
+    line-height: 1.05;
+  }
+
+  .header-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.82rem;
+    margin-top: 1rem;
+    font-family: 'Space Mono', monospace;
+    line-height: 1.6;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header-divider {
+    width: 48px;
+    height: 3px;
+    background: var(--yellow);
+    margin: 1.25rem auto;
+    border-radius: 2px;
+    opacity: 0.6;
+  }
+
+  .header-stats {
+    display: inline-flex;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 0;
+  }
+
+  .stat {
+    text-align: center;
+    padding: 0.6rem 1.75rem;
+    border-right: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.75rem;
+    color: var(--yellow);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 3px;
+    display: block;
+  }
+
+  /* CONTROLS */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--ink);
+    border-bottom: 3px solid var(--yellow);
+    padding: 0.75rem 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .search-wrap .icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  #search {
+    width: 100%;
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  #search::placeholder { color: rgba(255,255,255,0.4); }
+  #search:focus { border-color: var(--yellow); }
+
+  .filter-wrap {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.4rem 0.9rem;
+    border: 2px solid rgba(255,255,255,0.2);
+    border-radius: 3px;
+    background: transparent;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--yellow);
+    border-color: var(--yellow);
+    color: var(--ink);
+  }
+
+  .results-count {
+    color: rgba(255,255,255,0.4);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  /* ALPHA NAV */
+  .alpha-nav {
+    background: rgba(26,26,46,0.95);
+    padding: 0.5rem 1.5rem;
+    display: flex;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-bottom: 2px solid rgba(255,255,255,0.05);
+  }
+
+  .alpha-btn {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.4);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.85rem;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.15s;
+  }
+
+  .alpha-btn:hover, .alpha-btn.has-items:hover {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--ink);
+  }
+
+  .alpha-btn.has-items {
+    color: rgba(255,255,255,0.7);
+    border-color: rgba(255,255,255,0.25);
+  }
+
+  /* MAIN GRID */
+  .main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+  }
+
+  .alpha-section {
+    margin-bottom: 3rem;
+  }
+
+  .alpha-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .alpha-letter {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--ink);
+    opacity: 0.08;
+    min-width: 60px;
+  }
+
+  .alpha-line {
+    flex: 1;
+    height: 2px;
+    background: var(--ink);
+    opacity: 0.1;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* CARD */
+  .card {
+    background: #fff;
+    border: 3px solid var(--ink);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 5px 5px 0 var(--ink);
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    animation: cardIn 0.4s ease both;
+  }
+
+  @keyframes cardIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--ink);
+  }
+
+  .card-top {
+    padding: 1rem 1rem 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .card-emoji {
+    font-size: 2rem;
+    line-height: 1;
+    min-width: 40px;
+    text-align: center;
+  }
+
+  .card-title-wrap { flex: 1; }
+
+  .card-term {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.03em;
+    line-height: 1;
+  }
+
+  .card-abbr {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(26,26,46,0.45);
+    margin-top: 2px;
+  }
+
+  .card-cat {
+    font-size: 0.6rem;
+    font-family: 'Space Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-weight: 700;
+    white-space: nowrap;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+
+  .card-body {
+    padding: 0 1rem 1rem;
+    border-top: 2px dashed rgba(26,26,46,0.12);
+    padding-top: 0.75rem;
+  }
+
+  .card-def {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-indian {
+    background: rgba(255,112,67,0.08);
+    border-left: 3px solid var(--orange);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 4px 4px 0;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    color: #555;
+    font-style: italic;
+  }
+
+  .card-indian strong {
+    color: var(--orange);
+    font-style: normal;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .card-example {
+    background: rgba(0,201,177,0.06);
+    border-left: 3px solid var(--teal);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0 4px 4px 0;
+    margin: 0.5rem 0;
+    font-size: 0.8rem;
+    color: #555;
+  }
+
+  .card-example strong {
+    color: var(--teal);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 2px;
+    font-style: normal;
+  }
+
+  .card-protip {
+    background: var(--yellow);
+    border-radius: 4px;
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.78rem;
+    color: var(--ink);
+  }
+
+  .card-protip strong {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .card-stripe {
+    height: 6px;
+  }
+
+  /* Category colors */
+  .cat-strategy { --cat: #3A86FF; }
+  .cat-design { --cat: #FF6B9D; }
+  .cat-innovation { --cat: #06D6A0; }
+  .cat-org { --cat: #7B5EA7; }
+  .cat-finance { --cat: #FF7043; }
+  .cat-marketing { --cat: #FFD60A; --cat-text: #1a1a2e; }
+  .cat-tools { --cat: #EF233C; }
+  .cat-basics { --cat: #00C9B1; }
+
+  .card-stripe { background: var(--cat, #ccc); }
+  .card-cat { background: color-mix(in srgb, var(--cat, #ccc) 15%, transparent); color: var(--cat, #666); }
+
+  /* NO RESULTS */
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    display: none;
+  }
+
+  .no-results.show { display: block; }
+
+  .no-results-emoji { font-size: 4rem; display: block; margin-bottom: 1rem; }
+
+  .no-results h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* FOOTER */
+  .footer {
+    background: var(--ink);
+    color: rgba(255,255,255,0.4);
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.7rem;
+    border-top: 4px solid var(--yellow);
+  }
+
+  .footer span { color: var(--yellow); }
+
+  /* BOOKMARK */
+  .bookmark-btn {
+    position: absolute;
+    top: 8px; right: 8px;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    cursor: pointer;
+    opacity: 0.3;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .bookmark-btn:hover { opacity: 0.7; transform: scale(1.2); }
+  .bookmark-btn.saved { opacity: 1; }
+
+  /* HIDDEN */
+  .card.hidden { display: none; }
+  .alpha-section.hidden { display: none; }
+
+  @media (max-width: 600px) {
+    .controls { padding: 0.75rem; }
+    .filter-btn { font-size: 0.6rem; padding: 0.3rem 0.6rem; }
+    .cards-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">✦ The Ultimate Reference ✦</div>
+  <h1>Business Design<span>Jargon</span><em>for Dummies</em></h1>
+  <p class="header-sub">Your practical, lifelong cheat sheet for business design challenges</p>
+  <div class="header-divider"></div>
+  <div class="header-stats">
+    <div class="stat"><span class="stat-num" id="totalCount">0</span><span class="stat-label">Terms</span></div>
+    <div class="stat"><span class="stat-num">8</span><span class="stat-label">Categories</span></div>
+    <div class="stat"><span class="stat-num">🇮🇳</span><span class="stat-label">India Context</span></div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="icon">🔍</span>
+    <input type="text" id="search" placeholder="Search any term, acronym, or category...">
+  </div>
+  <div class="filter-wrap">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="strategy">Strategy</button>
+    <button class="filter-btn" data-filter="design">Design</button>
+    <button class="filter-btn" data-filter="org">Org</button>
+    <button class="filter-btn" data-filter="finance">Finance</button>
+    <button class="filter-btn" data-filter="marketing">Marketing</button>
+    <button class="filter-btn" data-filter="tools">Tools</button>
+    <button class="filter-btn" data-filter="innovation">Innovation</button>
+    <button class="filter-btn" data-filter="basics">Basics</button>
+  </div>
+  <span class="results-count" id="resultsCount"></span>
+</div>
+
+<div class="alpha-nav" id="alphNav"></div>
+
+<div class="main" id="mainGrid"></div>
+<div class="no-results" id="noResults">
+  <span class="no-results-emoji">🤷</span>
+  <h3>Term Not Found!</h3>
+  <p>Try a different search or browse by category</p>
+</div>
+
+<div class="footer">
+  <p>Made with ✦ for students who are tired of nodding along in class</p>
+  <p style="margin-top:0.5rem"><span>Business Design Jargon for Dummies</span> - India Edition</p>
+</div>
+
+<script>
+const TERMS = [
+  // A
+  { term: "Action Plan", abbr: "", cat: "strategy", emoji: "📋", def: "A detailed, step-by-step roadmap that breaks down HOW you'll achieve a goal. Converts big strategy into daily doable tasks.", indian: "Think of it like a shaadi planning checklist - venue, caterer, mehendi date, everything mapped out!", example: "A startup's action plan for launch: Week 1 – brand identity, Week 2 – website, Week 3 – social media setup.", protip: "A good action plan answers: What? Who? By when? If you're missing any of these, it's not a plan - it's a wish." },
+
+  { term: "Blueprint", abbr: "", cat: "design", emoji: "📐", def: "The master plan or detailed design specification of a product, service, or business. Shows all components and how they connect.", indian: "Like an architect's naksha (map) before construction begins - nothing gets built without it.", example: "A service blueprint for a hospital maps patient journey, staff actions, and backend processes all in one view.", protip: "Always make your blueprint BEFORE you build, not during." },
+
+  { term: "Business", abbr: "", cat: "basics", emoji: "🏢", def: "An organization that creates, delivers, and captures value by solving a problem for a group of customers in exchange for money.", indian: "From Tata selling salt to your neighbourhood kirana store - all of them are businesses at their core.", example: "Zomato is a business that solves the problem of 'I'm hungry but don't want to cook.'", protip: null },
+
+  { term: "Business Challenge Framework", abbr: "BCF", cat: "tools", emoji: "🧩", def: "A structured approach to diagnosing, framing, and solving complex business problems. Ensures you're solving the RIGHT problem, not just a symptom.", indian: "Like going to a doctor who doesn't just give you Crocin - they actually diagnose what's wrong first.", example: "Before designing a new app, BCF helps ask: Is the real problem awareness, access, or affordability?", protip: "Always reframe the problem at least once. Your first framing is almost never the real problem." },
+
+  { term: "Business Model Canvas", abbr: "BMC", cat: "tools", emoji: "🖼️", def: "A one-page visual tool with 9 building blocks that maps out how an entire business creates, delivers, and captures value.", indian: "Think of it as the CV of your business - everything essential on one page.", example: "Ola's BMC would show: customers (urban commuters), value prop (affordable rides on demand), revenue (commission per ride).", protip: "Fill the BMC in this order: Customer Segments → Value Proposition → everything else." },
+
+  // C
+  { term: "Capex", abbr: "Capital Expenditure", cat: "finance", emoji: "🏗️", def: "Money spent by a company on acquiring or upgrading long-term physical assets like equipment, buildings, or technology. An investment, not an expense.", indian: "Like buying a tandoor oven for your dhaba - it costs a lot upfront but serves you for years.", example: "Reliance buying a 5G tower network is Capex. Buying stationery for the office is not.", protip: "Capex appears on the balance sheet, not the P&L. That's why it feels 'invisible' until depreciation hits." },
+
+  { term: "Cash Flow", abbr: "", cat: "finance", emoji: "💸", def: "The movement of money in and out of a business. Positive cash flow = more coming in than going out. The lifeblood of any business.", indian: "Even profitable businesses die from cash flow problems. Viability ≠ liquidity. Ask any festival vendor who earns in October but needs to pay rent in June.", example: "A seasonal business like a mango exporter has positive cash flow only for 3 months. The rest of the year it must plan carefully.", protip: "Revenue is vanity. Profit is sanity. Cash flow is reality." },
+
+  { term: "Centralized", abbr: "", cat: "org", emoji: "🎯", def: "An organizational structure where decision-making power is concentrated at the top. The head office calls all the shots.", indian: "Like a joint family where dadaji makes all financial decisions - everyone consults him first.", example: "Many traditional Indian conglomerates like the older Tata structure were highly centralized.", protip: null },
+
+  { term: "Chain of Command", abbr: "", cat: "org", emoji: "⛓️", def: "The formal line of authority and communication flowing from the top of an organization down to frontline employees. Who reports to whom.", indian: "Like the army: General → Colonel → Major → Captain → Jawan. No one skips levels.", example: "A store manager reports to the regional head who reports to the VP of Retail.", protip: "Breaking the chain of command might get things done faster - but can cause political problems." },
+
+  { term: "Competitive Study", abbr: "", cat: "strategy", emoji: "🔭", def: "A systematic analysis of your competitors - their strengths, weaknesses, pricing, positioning, and strategies - to find your own competitive edge.", indian: "Like a chai shop owner who notices the new café next door charges ₹180 for what he serves for ₹20 - and then figures out his positioning.", example: "Before launching Jio, Reliance did an exhaustive competitive study of Airtel, Vodafone, and Idea.", protip: "The goal isn't to copy competitors. It's to find the gap they're all missing." },
+
+  { term: "Competitor", abbr: "", cat: "strategy", emoji: "⚔️", def: "Any company or entity competing for the same customer, budget, or market space as you. Can be direct (same product) or indirect (different product, same need).", indian: "Maggi's competitor isn't just Yippee Noodles - it's also bread, poha, upma. Anything a hungry person reaches for.", example: "Netflix competes with YouTube, OTT platforms, but also with sleep and free time.", protip: "Always map indirect competitors too. Disruption often comes from outside your industry." },
+
+  { term: "Cost", abbr: "", cat: "finance", emoji: "🧾", def: "The total money spent to produce a product, deliver a service, or run operations. Split into fixed costs (rent, salaries) and variable costs (materials, shipping).", indian: "COGS, overhead, logistics - cost is everything you spend before you make a rupee.", example: "For a restaurant: rent, chef's salary, raw materials, gas, electricity - all are costs.", protip: "Reduce costs by finding inefficiencies, not by cutting quality. Customers notice quality cuts immediately." },
+
+  { term: "Customer", abbr: "", cat: "marketing", emoji: "👤", def: "The person or entity who buys or pays for your product or service. May or may not be the end user.", indian: "In India, the person buying the product (parent) is often not the person using it (child). This distinction matters enormously in design.", example: "In B2B, your customer is the procurement manager. Your user might be an engineer using the software daily.", protip: "Never assume you know what your customer wants. Observe. Ask. Test." },
+
+  // D
+  { term: "Decentralized", abbr: "", cat: "org", emoji: "🌐", def: "An organizational model where decision-making authority is distributed across multiple levels or locations, not just at the top.", indian: "Like a franchise model - each outlet manager can take local decisions without calling HQ for every little thing.", example: "Amul is a great Indian example of decentralization - each district dairy cooperative operates semi-independently.", protip: null },
+
+  { term: "Decision Making", abbr: "", cat: "strategy", emoji: "⚖️", def: "The process of selecting a course of action from multiple alternatives. Good decisions are informed, timely, and aligned with goals.", indian: "The classic jugaad decision - 'kuch toh karna padega' - is still a decision, just an intuitive one!", example: "Using data (NPS scores, sales reports) to decide whether to expand a product line.", protip: "The best decisions are made with 70% of the information you wish you had. Waiting for 100% means deciding too late." },
+
+  { term: "Departmentalization", abbr: "", cat: "org", emoji: "🗂️", def: "The process of grouping jobs, tasks, and people into departments based on function, product, geography, or customer type.", indian: "Like organizing a college fest - one team handles logistics, one handles sponsorship, one handles performances.", example: "A company might have Marketing, Finance, Operations, HR, and R&D as departments.", protip: null },
+
+  { term: "Design", abbr: "", cat: "design", emoji: "✏️", def: "In a business context, design is not just aesthetics - it's intentional problem-solving. Business design combines strategy, human insight, and creativity to create systems, services, and experiences.", indian: "Design is the bridge between jugaad innovation and scalable enterprise. India's best products (UPI, Aadhaar) were brilliantly designed.", example: "The redesign of the IRCTC booking experience made train travel accessible to millions of non-tech users.", protip: "Good design is invisible. You only notice bad design." },
+
+  { term: "Desirability", abbr: "", cat: "design", emoji: "❤️", def: "One of the three lenses of innovation. Does someone actually WANT this? Does it solve a real, felt need and connect emotionally?", indian: "A product can be technically brilliant and financially sound but if nobody wants it, it fails. Ask Videocon d2h, Kisan Channel.", example: "The iPhone was desirable because it was beautiful, intuitive, and became a status symbol.", protip: "Desirability is validated through user research and observation - not by asking 'would you use this?'" },
+
+  { term: "Divisional", abbr: "", cat: "org", emoji: "🏬", def: "An organizational structure where the company is divided into semi-autonomous divisions, each with its own functions (like a mini-company within the company), usually organized by product, region, or customer.", indian: "Hindustan Unilever is divisional - its Home Care, Personal Care, and Foods divisions operate quite independently.", example: "A media company might have a Films Division, a Digital Division, and a Publishing Division.", protip: null },
+
+  // F
+  { term: "Feasibility", abbr: "", cat: "design", emoji: "🔧", def: "Can we actually BUILD this? Feasibility asks whether the technology, resources, skills, and infrastructure exist to execute an idea.", indian: "India's jugaad culture has always been about feasibility - 'kaam ho jaayega' (it can be done) with whatever we have.", example: "Building an AI-powered diagnostics tool is desirable. But feasible only if you have the data, compute power, and regulatory approval.", protip: "Check feasibility early. Nothing kills a project faster than realizing you can't build it after investing months of design work." },
+
+  { term: "Formalization", abbr: "", cat: "org", emoji: "📝", def: "The degree to which rules, procedures, instructions, and communication in an organization are written down and standardized.", indian: "Large corporates like Infosys are highly formalized - every process has an SOP. A startup might have zero formalization and run on WhatsApp groups.", example: "An onboarding checklist for new employees is an example of formalization.", protip: null },
+
+  { term: "FOC", abbr: "Free of Cost", cat: "finance", emoji: "🎁", def: "Items or services provided at zero cost, often as samples, marketing incentives, or goodwill gestures. Not truly 'free' - someone always pays somewhere.", indian: "Every Indian knows FOC - the extra mithai at a sweet shop, or the 'buy 2 get 1 free' offer during Diwali sale.", example: "Pharma reps giving FOC drug samples to doctors. Hotels offering FOC room upgrades to loyalty members.", protip: "Track FOC carefully. Uncontrolled FOC destroys margins." },
+
+  { term: "Franchise", abbr: "", cat: "strategy", emoji: "🏪", def: "A business model where a franchisor licenses its brand, systems, and support to a franchisee who operates an independent outlet in exchange for fees or royalties.", indian: "India's biggest franchise success story: Amul, VLCC, Subway, and of course, local favourites like Haldiram's and Monginis.", example: "If you open a McDonald's outlet in Mumbai, you're a franchisee. McDonald's is the franchisor.", protip: "Franchise is a distribution strategy, not just a business model. It scales faster but reduces control." },
+
+  { term: "Functional", abbr: "", cat: "org", emoji: "⚙️", def: "An organizational structure grouped by function - all marketers together, all finance people together, all operations together. Common in most companies.", indian: "Most traditional Indian companies are functionally organized. It creates efficiency but can cause siloed thinking.", example: "HR, Marketing, Finance, IT - each is a functional department.", protip: null },
+
+  // E
+  { term: "Ecosystem", abbr: "", cat: "strategy", emoji: "🌿", def: "The interconnected network of businesses, partners, customers, competitors, and regulators that together shape an industry or market. No business operates in isolation.", indian: "India's startup ecosystem - IITs producing talent, VCs funding ideas, accelerators like NASSCOM nurturing growth, and regulators like SEBI setting the rules - is one of the world's most vibrant.", example: "Apple's ecosystem: iPhone + App Store + iCloud + AirPods + Apple Watch. Each product makes the others more valuable.", protip: "The strongest competitive advantage isn't a single product - it's building an ecosystem others depend on." },
+
+  { term: "Empathy", abbr: "", cat: "design", emoji: "🫀", def: "The ability to deeply understand and share the feelings, needs, and motivations of your users or customers. The foundation of all human-centered design.", indian: "Empathy is why Jio priced data at near-zero - they understood the aspiration of rural India to be connected, not just the functional need for internet.", example: "Spending a day shadowing a nurse before designing hospital software. That's empathy-led design.", protip: "Empathy is not sympathy. Sympathy is 'I feel sorry for you.' Empathy is 'I understand what it feels like to BE you.'" },
+
+  { term: "Ethnography", abbr: "", cat: "design", emoji: "👁️", def: "A qualitative research method where you observe and immerse yourself in a user's real environment and daily life to understand behavior, culture, and needs that surveys miss.", indian: "Hindustan Unilever's Project Shakti was born from ethnographic research in rural India - they lived in villages to understand how women managed money and hygiene.", example: "Watching how people actually cook in their kitchens (not what they say they do) before designing a new cookware product.", protip: "What people DO and what people SAY they do are often completely different. Ethnography captures the truth." },
+
+  { term: "Experience Design", abbr: "XD", cat: "design", emoji: "🎢", def: "The practice of designing entire experiences - not just products or interfaces - across all touchpoints and emotions throughout a customer's journey.", indian: "The Taj Hotels experience: from the doorman's greeting to the checkout gift - every moment is designed. That is experience design at its finest.", example: "Designing a bank's onboarding: not just the app UI but the welcome kit, the first email, the branch visit, and the first statement.", protip: "People forget what you said. They forget what you did. But they never forget how you made them feel. Design for emotion." },
+
+  // G
+  { term: "Gap Analysis", abbr: "", cat: "strategy", emoji: "🕳️", def: "The process of comparing your current state to your desired future state to identify the 'gap' - what's missing, what needs to change, and what resources are required.", indian: "Like comparing where you are in your career now vs. where you want to be in 5 years. The gap tells you what skills, networks, and experience you need to build.", example: "A company's current NPS is 32. Target is 60. Gap analysis identifies: slow delivery, poor packaging, and weak after-sales as the key gaps.", protip: "Always be specific about BOTH your current state and target state. Vague gaps produce vague solutions." },
+
+  { term: "Go-to-Market", abbr: "GTM", cat: "strategy", emoji: "🚀", def: "A strategic plan that defines how a company will launch a product or service to market - who it targets, how it reaches them, what it charges, and how it sells.", indian: "Jio's GTM was legendary: free SIMs, zero data charges for 6 months, and Mukesh Ambani's face on every hoarding. Disruption by design.", example: "A GTM plan for a new EdTech app: Target = Tier-2 city students, Channel = Instagram + school partnerships, Price = ₹299/month, Launch = before board exam season.", protip: "A great product with a poor GTM fails. A good product with a brilliant GTM wins. Distribution is underrated." },
+
+  { term: "Growth Hacking", abbr: "", cat: "innovation", emoji: "📈", def: "A marketing approach focused on rapid experimentation across channels and strategies to find the most efficient, scalable ways to grow a business - usually with minimal budget.", indian: "Paytm's 'Paytm Karo' campaign during demonetization was pure growth hacking - they turned a crisis into a mass adoption moment overnight.", example: "Dropbox's referral program: 'Give 500MB, Get 500MB.' Grew users from 100K to 4M in 15 months at near-zero cost.", protip: "Growth hacking is not about tricks - it's about finding your product's natural growth loop and amplifying it." },
+
+  // Q
+  { term: "Qualitative Research", abbr: "", cat: "design", emoji: "💬", def: "Research that explores WHY people think, feel, or behave in certain ways. Collected through interviews, observations, focus groups, and open-ended questions. Rich in insight, not numbers.", indian: "Sitting with a homemaker in Jaipur and asking her how she decides which cooking oil to buy - that's qualitative research. Her story reveals what no survey can.", example: "Conducting 20 in-depth interviews with cancer patients to understand the emotional experience of hospital visits before redesigning the oncology ward.", protip: "Qualitative research tells you what to fix. Quantitative research tells you how many people have the problem. Use both." },
+
+  { term: "Quantitative Research", abbr: "", cat: "design", emoji: "📊", def: "Research that collects numerical data to measure, compare, and generalize patterns across large groups. Surveys, analytics, A/B tests, and structured questionnaires.", indian: "Nielsen surveys, BARC TV ratings, Google Analytics - these are all quantitative research tools widely used by Indian brands.", example: "Surveying 5,000 app users to find that 68% abandon checkout at the payment step - a quantitative finding that drives product decisions.", protip: "Big numbers give confidence but not direction. Always follow up quantitative findings with qualitative 'why' questions." },
+
+  { term: "Quick Wins", abbr: "", cat: "strategy", emoji: "⚡", def: "Small, fast actions that deliver immediate, visible results. Used to build momentum, demonstrate progress, and gain stakeholder confidence early in a project.", indian: "Every new Indian manager knows: in your first 90 days, score some quick wins before attempting big structural changes. It builds political capital.", example: "Fixing a broken contact form on a website is a quick win. Redesigning the entire website is not.", protip: "Quick wins are not shortcuts - they're strategic moves that buy you time and trust for the harder, longer work ahead." },
+
+  // W
+  { term: "Whitespace", abbr: "", cat: "design", emoji: "⬜", def: "In business strategy, an unexplored or underserved market opportunity where competition is low. In design, the empty space around elements that creates clarity and breathing room.", indian: "When Patanjali entered FMCG, it occupied the 'natural/desi' whitespace that HUL and P&G had left untouched for decades.", example: "Business: The affordable luxury segment in India was a whitespace Tanishq exploited brilliantly. Design: Apple's minimal UI is famous for its generous whitespace.", protip: "Whitespace in strategy = opportunity. Whitespace in design = clarity. Both are powerful when used intentionally." },
+
+  { term: "Wireframe", abbr: "", cat: "design", emoji: "🖊️", def: "A low-fidelity, skeletal layout of a digital interface showing structure, navigation, and content placement - without colors, fonts, or final visuals. The blueprint of a screen.", indian: "A wireframe is like the pencil sketch before the rangoli - you plan the structure before committing to the beautiful details.", example: "Before designing the Zomato app, designers would wireframe: where the search bar sits, where restaurant cards appear, where the cart icon lives.", protip: "Never skip wireframing. Fixing structure in a sketch takes 5 minutes. Fixing it in a coded prototype takes 5 days." },
+
+  { term: "Workflow", abbr: "", cat: "org", emoji: "➡️", def: "The defined sequence of steps, tasks, or processes that need to be completed to achieve a specific outcome. The 'how work moves' through a system or team.", indian: "In India, workflow chaos is common in growing companies - things happen over WhatsApp, in corridors, and by memory. Formalizing workflow is a sign of organizational maturity.", example: "Content approval workflow: Writer drafts → Editor reviews → Legal checks → Designer formats → Manager approves → Scheduler publishes.", protip: "Map your workflow visually before automating it. You'll always find unnecessary steps hiding in plain sight." },
+
+  // X
+  { term: "X-Factor", abbr: "", cat: "strategy", emoji: "✨", def: "The unique, hard-to-define quality that makes a brand, product, or person stand out from the crowd. Often an intangible combination of personality, design, and experience.", indian: "Amul's X-Factor is its wit. Titan's is trust. Zomato's is its irreverent brand voice. None of these can be easily copied - that's the point.", example: "Apple's X-Factor isn't just design - it's the feeling of status, creativity, and belonging that comes with the Apple logo.", protip: "Your X-Factor is usually what you're naturally best at - not what you try hardest to be. Find it, own it, amplify it." },
+
+  { term: "Cross-Functional", abbr: "X-Functional", cat: "org", emoji: "🔀", def: "Involving people from multiple departments or disciplines working together toward a shared goal. Breaks down silos and combines diverse expertise.", indian: "India's best product launches are cross-functional: marketing, tech, design, legal, and finance all in one war room. Think IPL app launches or Aadhaar rollout.", example: "A cross-functional team for a product launch: Product Manager + Designer + Engineer + Marketer + Data Analyst + Legal.", protip: "Cross-functional teams move faster but need clear ownership. Decide who has the final call before the team forms, not after conflict arises." },
+
+  // Y
+  { term: "Yield", abbr: "", cat: "finance", emoji: "🌾", def: "The return generated on an investment or asset over a period of time, expressed as a percentage. Also used in operations to mean the ratio of good output vs total input.", indian: "Yield management is why your Indigo flight ticket costs ₹2,000 if booked 3 months in advance and ₹12,000 if booked 3 days before.", example: "Financial yield: A bond that pays ₹8 interest annually on a ₹100 face value has an 8% yield. Operational yield: A factory producing 950 good units from 1000 inputs has a 95% yield.", protip: "Maximize yield by reducing waste - whether that's wasted capital, wasted raw material, or wasted customer attention." },
+
+  { term: "Gen Y / Millennials", abbr: "Generation Y", cat: "marketing", emoji: "📱", def: "People born approximately between 1981–1996. The first digital-native generation and now the largest consumer and workforce segment globally. Values experiences over possessions, purpose over paycheck.", indian: "India's ₹450 Bn startup ecosystem was largely built BY millennials and FOR millennials - urban, aspirational, app-first consumers.", example: "Swiggy, Urban Company, Cult.fit - all products built for millennial lifestyle needs: convenience, wellness, and on-demand everything.", protip: "Marketing to millennials: Be authentic, stand for something, and don't interrupt their feed - be worth following." },
+
+  // Z
+  { term: "Zero-Based Budgeting", abbr: "ZBB", cat: "finance", emoji: "0️⃣", def: "A budgeting method where every expense must be justified from scratch each period - starting from zero - rather than basing the budget on the previous year's spending.", indian: "Several Indian conglomerates adopted ZBB after Unilever's global push: 'Why are we spending this? What value does it create?' - forces radical cost discipline.", example: "Instead of 'last year's marketing budget was ₹50L so this year is ₹55L,' ZBB asks 'what marketing do we actually need and why?'", protip: "ZBB is powerful but exhausting. Use it for major budget cycles or when you need to cut costs fast - not every quarter." },
+
+  { term: "Zero to One", abbr: "", cat: "innovation", emoji: "🌱", def: "Coined by Peter Thiel - going from nothing to something truly new. Creating a genuinely novel product or business rather than copying and improving what exists (1 to N). True innovation vs incremental improvement.", indian: "UPI was a zero-to-one innovation for India - no country had built a real-time, interoperable, mobile payment rail at this scale before.", example: "Inventing the smartphone was zero to one. Making a slightly better smartphone is one to N.", protip: "Zero to one is rare and risky. One to N is safer but commoditized. Know which one you're building - and why." },
+
+  { term: "Foresight", abbr: "", cat: "strategy", emoji: "🔮", def: "The practice of anticipating future trends, shifts, and scenarios to make better decisions today. Strategic foresight helps organizations prepare for multiple possible futures.", indian: "Reliance foresaw the coming 4G wave and invested billions in Jio infrastructure years before anyone else. That's business foresight.", example: "A fashion brand using trend forecasting to design for what customers will want 18 months from now.", protip: "Foresight is not prediction - it's preparation. You can't know the future, but you can be ready for multiple versions of it." },
+
+  // H
+  { term: "Hierarchy", abbr: "", cat: "org", emoji: "🏛️", def: "The vertical arrangement of authority levels in an organization. Each level has power over those below it. The higher you go, the more decision-making power you have.", indian: "Indian work culture is deeply hierarchical - you 'sir' your boss and 'sir' your boss's boss too.", example: "Intern → Executive → Manager → Director → VP → C-Suite → Board", protip: "Flat hierarchies (fewer levels) are faster and more agile. Tall hierarchies offer more control and specialization." },
+
+  { term: "Hub and Spoke", abbr: "", cat: "strategy", emoji: "🎡", def: "A distribution or network model where a central hub connects to multiple outlying spokes. Everything flows through the center.", indian: "Indian Railways is the classic hub and spoke - major junctions like Mumbai CST, Delhi, Chennai are hubs, with regional lines as spokes.", example: "FedEx flies all packages to Memphis (hub) first, then redistributes to destination cities (spokes) - even if origin and destination are nearby.", protip: "Hub and spoke is efficient for management but creates a single point of failure at the hub." },
+
+  { term: "Hypothesis", abbr: "", cat: "design", emoji: "🧪", def: "An educated guess or assumption that you test through research or experimentation. Not a fact - it's a starting belief that gets validated or disproved.", indian: "Like a doctor saying 'I think it might be dengue, let's do a test' - that's a hypothesis. You act on data, not assumptions.", example: "'We believe that if we reduce our checkout steps from 5 to 2, conversion will increase by 30%' - this is a hypothesis to test.", protip: "A good hypothesis has an 'if-then' structure. If [action], then [outcome], because [reason]." },
+
+  // I
+  { term: "Iteration", abbr: "", cat: "innovation", emoji: "🔄", def: "The process of repeatedly refining and improving a product, service, or idea based on feedback and testing. Each cycle produces a better version.", indian: "Every Bollywood sequel is technically an iteration (though not always a better one). Seriously though - think how WhatsApp evolves every few months.", example: "Instagram Stories was an iteration responding to Snapchat's growth - test, learn, improve.", protip: "Fail fast, iterate faster. The goal isn't to be perfect - it's to be progressively less wrong." },
+
+  // J
+  { term: "JDs", abbr: "Job Descriptions", cat: "org", emoji: "📄", def: "Formal documents that outline a specific role's responsibilities, required skills, reporting structure, and performance expectations.", indian: "Most Indian job portals (Naukri, LinkedIn) are filled with JDs - often asking for '5 years experience' for entry-level roles!", example: "A JD for a Marketing Manager might include: Brand Strategy, Campaign Management, Team Leadership, Budget Oversight.", protip: "Write JDs around outcomes, not tasks. 'Grow brand awareness by 30%' is better than 'post on social media daily.'" },
+
+  // K
+  { term: "KPI", abbr: "Key Performance Indicator", cat: "strategy", emoji: "📊", def: "A measurable value that shows how effectively a company or individual is achieving key business objectives. The number that tells you if you're winning.", indian: "From cricket stats (strike rate, economy) to business - Indians love numbers that tell a story.", example: "Monthly Active Users (MAU), Revenue Growth %, Customer Acquisition Cost (CAC), NPS score.", protip: "Have fewer KPIs. A business tracking 20 KPIs is tracking nothing. Pick 3-5 that truly matter." },
+
+  // L
+  { term: "Laissez-Faire", abbr: "", cat: "org", emoji: "🌊", def: "A hands-off leadership style where the leader gives employees maximum freedom to make decisions with minimal supervision or direction.", indian: "Classic startup culture in India - founder says 'you own this, figure it out' and disappears to pitch investors.", example: "Creative agencies often use laissez-faire leadership to give designers freedom to experiment.", protip: "Laissez-faire works only when your team is highly skilled and self-motivated. It's not laziness - it's trust." },
+
+  { term: "Lead Generation", abbr: "Lead Gen", cat: "marketing", emoji: "🧲", def: "The process of attracting and converting strangers into potential customers (leads) who have shown interest in your product or service.", indian: "From college admission counselors calling students to WhatsApp groups selling insurance - India has perfected (and over-used) lead generation.", example: "A free webinar that collects email addresses. A 'Request a Demo' button on a website. Both generate leads.", protip: "Quality > Quantity in leads. 10 highly interested leads beat 1000 random contacts." },
+
+  { term: "Lean / Lean Thinking", abbr: "", cat: "innovation", emoji: "⚡", def: "A philosophy focused on maximizing customer value while minimizing waste. Every step that doesn't add value to the customer should be eliminated or reduced.", indian: "India invented lean thinking before Toyota did - the concept of 'jugaad' is essentially lean: maximum result, minimum resource.", example: "Toyota's lean manufacturing eliminated unnecessary inventory, reducing waste and speeding up production.", protip: "Ask 'does this step make the customer's life better?' If the answer is no, it might be waste." },
+
+  // M
+  { term: "Market Share", abbr: "", cat: "strategy", emoji: "🥧", def: "The percentage of a total market controlled by a particular company or product. Your slice of the pie.", indian: "Jio went from 0 to 35%+ telecom market share in under 3 years. That's a market share disruption story for the history books.", example: "If total shampoo market in India is ₹10,000 Cr and HUL sells ₹2,500 Cr worth, their market share is 25%.", protip: "Market share alone doesn't equal profitability. Focus on the most valuable segments, not just the biggest slice." },
+
+  { term: "Marketing", abbr: "", cat: "marketing", emoji: "📣", def: "All activities involved in creating awareness, interest, desire, and action around a product or service. It's how you make people want what you're selling.", indian: "From Amul's witty hoardings to IPL jersey sponsorships - Indian marketing ranges from hyperlocal to mega-scale.", example: "A launch campaign for a new phone: teaser videos, influencer unboxings, billboard ads, launch events.", protip: "Marketing is not selling. Marketing creates the conditions for selling to happen naturally." },
+
+  { term: "Matrix", abbr: "", cat: "org", emoji: "⬛", def: "An organizational structure where employees have dual reporting relationships - they report to both a functional manager AND a project/product manager simultaneously.", indian: "Common in IT firms like Infosys or TCS - you belong to a 'delivery unit' AND a specific client project at the same time.", example: "A designer reports to the Head of Design (functional) AND the Product Manager of the app they're working on (project).", protip: "Matrix structures are powerful but confusing. Always clarify who has final say to avoid politics." },
+
+  { term: "Mission", abbr: "", cat: "strategy", emoji: "🎯", def: "A concise statement of WHY your organization exists and WHAT it does TODAY. It focuses on current purpose and core activities.", indian: "Amul's mission is essentially 'empowering dairy farmers while delivering quality milk products to every Indian.' Short. Real. Actionable.", example: "Google's mission: 'Organize the world's information and make it universally accessible and useful.'", protip: "If your mission statement could apply to any company in your industry, it's too generic. Make it specific." },
+
+  { term: "Minimum Viable Product", abbr: "MVP", cat: "innovation", emoji: "🛸", def: "The most basic version of a product that can be released to early customers to test a core hypothesis and gather real feedback before building the full thing.", indian: "Think of it like serving a beta version of your new restaurant menu to a small group of regulars before the grand opening.", example: "Dropbox's MVP was literally just a demo video showing what the product WOULD do - they signed up thousands before writing a line of code.", protip: "An MVP is not a crappy product. It's a focused product. Only include what's needed to test your core assumption." },
+
+  // N
+  { term: "NPD", abbr: "New Product Development", cat: "innovation", emoji: "🧬", def: "The complete process of bringing a new product from idea to market - including ideation, concept development, prototyping, testing, and launch.", indian: "Parle-G took years to develop and remained unchanged for decades. Most FMCG giants have rigorous NPD cycles.", example: "Stages: Idea → Concept Test → Business Case → Prototype → User Test → Launch → Review", protip: "Most NPD projects fail. The key to success is validating early and often, not investing heavily in assumptions." },
+
+  { term: "NPS", abbr: "Net Promoter Score", cat: "marketing", emoji: "⭐", def: "A metric that measures customer loyalty by asking one question: 'How likely are you to recommend us to a friend?' Score runs from -100 to +100.", indian: "Swiggy, Zomato, and most consumer apps obsess over NPS. A high NPS in India often spreads via WhatsApp word-of-mouth.", example: "Scores 9-10: Promoters. 7-8: Passives. 0-6: Detractors. NPS = %Promoters - %Detractors.", protip: "Always follow the NPS question with 'Why?' The number tells you what. The 'why' tells you what to fix." },
+
+  // O
+  { term: "Objective", abbr: "", cat: "strategy", emoji: "🏹", def: "A specific, measurable goal that defines what an organization wants to achieve within a defined timeframe. More concrete than a vision.", indian: "Vision: 'Be India's most trusted bank.' Objective: 'Open 500 new branches in Tier-2 cities by 2026.'", example: "Product objective: 'Reduce app load time from 4 seconds to under 2 seconds by Q3.'", protip: "Objectives should be SMART - Specific, Measurable, Achievable, Relevant, Time-bound." },
+
+  { term: "Organisation", abbr: "", cat: "org", emoji: "🏛️", def: "A structured group of people working together toward a common goal with defined roles, processes, and hierarchy. Can be a company, NGO, government body, or startup.", indian: "From a 2-person chai tapri to TCS with 600,000 employees - all are organizations with structure, however informal.", example: "Infosys, Akshaya Patra Foundation, ISRO - all organisations with different purposes and structures.", protip: null },
+
+  { term: "Organizational Structure", abbr: "", cat: "org", emoji: "🌳", def: "The formal system that defines how activities, roles, and responsibilities are coordinated and communicated within an organization.", indian: "Think of it as the 'family tree' of a company - who's the patriarch, who reports to whom, who makes the calls.", example: "Types: Functional, Divisional, Matrix, Flat, Hierarchical", protip: "Structure follows strategy. Change your strategy first, then restructure if needed - not the other way around." },
+
+  // P
+  { term: "Persona", abbr: "", cat: "design", emoji: "🎭", def: "A semi-fictional character that represents your ideal customer or user, built from real research and data. Used to keep design and strategy human-centered.", indian: "Think: 'Priya, 26, working woman in Mumbai, earns ₹60K/month, shops online for convenience, price-sensitive but brand-aware.'", example: "Netflix might have personas like 'Weekend Binge Watcher', 'Fitness Documentary Fan', and 'Kids' Content Parent.'", protip: "Avoid making up personas from assumptions. Build them from real interviews and behavioral data." },
+
+  { term: "PESTEL", abbr: "Political, Economic, Social, Tech, Environmental, Legal", cat: "tools", emoji: "🌍", def: "A macro-environment analysis framework that examines the 6 external forces affecting any business. Helps understand what's outside your control.", indian: "India's PESTEL is uniquely complex: coalition politics, diverse regional economies, 22 official languages, rapid tech adoption, complex compliance landscape.", example: "Uber in India had to deal with: Political (regulation), Social (safety concerns), Legal (licensing) - all at once.", protip: "Don't just list PESTEL factors - identify which ones are THREATS and which are OPPORTUNITIES for your specific business." },
+
+  { term: "Pitch", abbr: "", cat: "strategy", emoji: "🎤", def: "A concise, compelling presentation of your business idea, product, or proposal to persuade investors, clients, or partners to take action.", indian: "India's startup boom has made 'pitch' mainstream - from Shark Tank India to IIM competitions, every founder now knows how to pitch.", example: "A 3-minute startup pitch covers: Problem → Solution → Market Size → Business Model → Team → Ask.", protip: "Lead with the problem, not the solution. Make your audience feel the pain before you offer the cure." },
+
+  { term: "Point to Point", abbr: "", cat: "strategy", emoji: "↔️", def: "A distribution or service model where connections are made directly between origin and destination without going through a central hub.", indian: "IndiGo's metro route strategy (Delhi ↔ Mumbai direct) is point-to-point. No layovers, no hubs.", example: "WhatsApp messages are point-to-point (end-to-end encryption). Your message goes directly to recipient.", protip: "Point-to-point is more efficient for direct routes but doesn't scale well to hundreds of destinations." },
+
+  { term: "POS", abbr: "Point of Sale", cat: "marketing", emoji: "🖥️", def: "The physical or digital location where a customer makes a purchase. Includes the hardware, software, and the transaction moment itself.", indian: "From the neighbourhood kirana store's simple digital cash register to Flipkart's checkout page - both are POS systems.", example: "Razorpay, Pine Labs, Paytm - all provide POS solutions for Indian businesses.", protip: "POS data is goldmine - it tells you what sells, when, where, and to whom. Analyze it regularly." },
+
+  { term: "Positioning", abbr: "", cat: "marketing", emoji: "📍", def: "The deliberate act of designing your product's image and identity to occupy a distinct place in the customer's mind relative to competitors.", indian: "Dettol = protection. Fevicol = strong bond. In India, positioning done right becomes part of the cultural lexicon.", example: "Volvo positioned itself as 'Safety' for 50 years. Everything - ads, design, engineering - served that one word.", protip: "Positioning is not what you say about yourself. It's what customers believe about you." },
+
+  { term: "PR", abbr: "Public Relations", cat: "marketing", emoji: "📰", def: "The practice of managing a company's image and relationship with the public, media, and other stakeholders. It's earned media, not paid.", indian: "When Tata acquired Land Rover Jaguar, the PR narrative of 'India buying a British icon' was worth millions in free media.", example: "Zomato's witty Twitter responses and social media moments are a form of PR - building brand image organically.", protip: "Good PR = be interesting. Great PR = be genuinely useful or meaningful. Bad PR = spinning a lie." },
+
+  { term: "Product Category", abbr: "", cat: "marketing", emoji: "📦", def: "A group of products that are closely related because they function in a similar manner, are sold to the same customer groups, or fall within the same price ranges.", indian: "Biscuits is a product category. Within it: Marie Gold, Good Day, Oreo - all compete within the same category but for different occasions.", example: "Shampoo Category → Anti-dandruff, Hair Fall, Volume, Colour Protection - all sub-categories.", protip: "Define your category carefully. It determines who you compete with and how customers evaluate you." },
+
+  { term: "Profits", abbr: "", cat: "finance", emoji: "💰", def: "What's left after all costs are subtracted from revenue. The financial reward for delivering value efficiently. Revenue - Total Costs = Profit.", indian: "Many Indian e-commerce companies were 'profitable on paper' but burning cash on discounts - masking real profit picture.", example: "Gross Profit = Revenue - COGS. Net Profit = Revenue - All Expenses (including tax).", protip: "Profit margin matters more than absolute profit. ₹10 Cr profit on ₹11 Cr revenue = better business than ₹50 Cr profit on ₹500 Cr revenue." },
+
+  { term: "Prototype", abbr: "", cat: "design", emoji: "🔨", def: "An early, experimental version of a product or concept built to test ideas, get feedback, and discover problems before investing in full development.", indian: "Think of it as the 'jugaad model' - rough, quick, gets the point across. The goal is learning, not impressing.", example: "A paper sketch of an app screen. A 3D printed model of a product. Even a role-play of a service experience.", protip: "Prototype to think, not to show. The process of building it will reveal problems your mind didn't catch." },
+
+  // R
+  { term: "R&D", abbr: "Research & Development", cat: "innovation", emoji: "🔬", def: "Systematic activities a business undertakes to innovate and introduce new products, services, or processes. The engine of future value creation.", indian: "India's pharmaceutical industry runs on R&D - companies like Dr. Reddy's and Cipla invest heavily in developing new drug formulations.", example: "ISRO's R&D produced the Chandrayaan and Mangalyaan missions at a fraction of global space agency costs.", protip: "R&D investment today = competitive advantage tomorrow. Companies that cut R&D in downturns often fall behind permanently." },
+
+  { term: "Revenue", abbr: "", cat: "finance", emoji: "📈", def: "The total income generated by a business from selling products or services before any costs are deducted. The top line of a financial statement.", indian: "Revenue is the first line on a P&L. In India, we sometimes say 'turnover' instead of revenue.", example: "If you sell 1000 T-shirts at ₹500 each, your revenue is ₹5,00,000. Costs come after.", protip: "Revenue is vanity. Without profit, high revenue just means you're efficiently losing money at scale." },
+
+  { term: "ROI", abbr: "Return on Investment", cat: "finance", emoji: "📐", def: "A measure of the financial return on an investment. ROI = (Net Benefit / Cost of Investment) × 100. Tells you if money spent was worth it.", indian: "Every Indian investor or business owner asks 'kitna return milega?' - that's ROI instinct.", example: "Spend ₹1 lakh on ads, generate ₹4 lakh in sales: ROI = 300%.", protip: "Always calculate ROI before approving budgets and after campaigns end. The difference reveals whether your assumptions held." },
+
+  // S
+  { term: "Sales", abbr: "", cat: "marketing", emoji: "🤝", def: "The direct process of converting a potential customer into an actual customer through persuasion, demonstration, and transaction. The moment money changes hands.", indian: "India's best salespeople are legendary - from a Marwari businessman's deal-making to a door-to-door Eureka Forbes salesperson.", example: "B2B sales: a software company's sales rep closing a 1-year enterprise deal with a corporation.", protip: "Sales is about solving the customer's problem, not pushing your product. Listen more than you talk." },
+
+  { term: "Sales & Leaseback", abbr: "", cat: "finance", emoji: "🔁", def: "A financial arrangement where an asset owner sells the asset and immediately leases it back from the buyer. Releases capital while retaining operational use of the asset.", indian: "Airlines like IndiGo and Air India use this frequently - sell their planes to leasing companies and lease them right back. Frees up huge capital.", example: "A hospital sells its building for ₹100 Cr to a real estate firm, then leases it back for ₹2 Cr/year. They get cash now, retain operations.", protip: "Great for capital-heavy businesses that need cash but can't afford to stop operations." },
+
+  { term: "Scope", abbr: "", cat: "design", emoji: "🔭", def: "The defined boundaries of a project - what IS included and what is NOT included. Clearly defining scope prevents 'scope creep' (uncontrolled project expansion).", indian: "Every Indian project suffers from 'thoda aur kar do' (do a little more) syndrome. Defining scope and sticking to it is a discipline.", example: "'Scope: Redesign the checkout flow for mobile users. Out of scope: Backend payment system, desktop UI.'", protip: "Anything not written in scope is out of scope. Verbal agreements expand projects. Written scope protects everyone." },
+
+  { term: "Services", abbr: "", cat: "basics", emoji: "🛎️", def: "Intangible offerings that provide value to customers through actions, expertise, or experiences rather than physical goods. You can't hold a service.", indian: "India's fastest-growing sectors are all services: IT, healthcare, fintech, education, logistics, hospitality.", example: "Consulting, banking, software, transportation, healthcare, hospitality - all services.", protip: "Because services are intangible, trust and reputation are everything. You're selling a promise." },
+
+  { term: "SKU", abbr: "Stock Keeping Unit", cat: "marketing", emoji: "🏷️", def: "A unique identifier assigned to each distinct product variant for inventory tracking. One product can have many SKUs.", indian: "A pack of Maggi comes in 70g, 140g, and family pack - those are 3 different SKUs even though it's the same noodle.", example: "A shoe brand sells one model in 6 sizes and 4 colours = 24 SKUs.", protip: "Too many SKUs = inventory nightmare. Audit regularly and kill slow-moving SKUs." },
+
+  { term: "SMART Goals", abbr: "", cat: "strategy", emoji: "🎯", def: "A framework for setting effective goals: Specific, Measurable, Achievable, Relevant, Time-bound. Turns vague intentions into actionable targets.", indian: "Most Indian students set goals like 'I want to crack UPSC' - with SMART it becomes: 'Score 180/250 in CSAT by next prelims, studying 3 hours daily.'", example: "Vague: 'Grow sales.' SMART: 'Increase online sales by 20% in Q4 2024 through targeted Instagram ads.'", protip: "If you can't measure it, you can't manage it. The M in SMART is non-negotiable." },
+
+  { term: "SOP", abbr: "Standard Operating Procedure", cat: "org", emoji: "📋", def: "A detailed, written set of step-by-step instructions for how to carry out a specific routine task. Ensures consistency, quality, and compliance.", indian: "From how a McDonald's burger is assembled to how HDFC Bank opens a new account - SOPs ensure every customer gets the same experience.", example: "A hotel SOP for housekeeping: Enter room → Open windows → Strip bed → Clean bathroom → Make bed → Restock amenities → Final check.", protip: "SOPs are only useful if people follow them. Build them WITH frontline staff, not just for them." },
+
+  { term: "Span of Control", abbr: "", cat: "org", emoji: "👥", def: "The number of direct reports a manager oversees. A wide span = many reports; a narrow span = few reports. Affects management structure depth.", indian: "A typical Indian bank branch manager might supervise 20+ tellers (wide span). A senior VP at McKinsey might supervise 3-4 partners (narrow span).", example: "Flat organizations have wide spans of control. Tall hierarchies have narrow spans.", protip: "Optimal span depends on task complexity. Complex creative work = narrow span. Routine tasks = wide span." },
+
+  { term: "Specialization", abbb: "", cat: "org", emoji: "🎯", def: "The degree to which organizational tasks are divided into separate, specialized jobs. Higher specialization = more focused experts, less task variety per person.", indian: "Indian IT companies are masters of specialization - you'll find people whose entire job is SQL query optimization or QA testing.", example: "In a hospital: surgeons, anaesthesiologists, radiologists, nurses - each highly specialized.", protip: "Specialization increases efficiency but can lead to narrow thinking. Cross-functional collaboration counterbalances this." },
+
+  { term: "Stakeholder", abbr: "", cat: "strategy", emoji: "🌐", def: "Any person, group, or organization that has an interest in or is affected by a company's decisions and actions. Broader than just customers - includes employees, investors, regulators, communities.", indian: "In India, 'jugaad' projects often skip stakeholder mapping - and then get blocked by local authorities or unions who were never consulted!", example: "Building a new factory: stakeholders include workers, nearby residents, local government, investors, suppliers, environmental groups.", protip: "Map stakeholders by POWER (can they block you?) and INTEREST (do they care?). Different quadrants = different engagement strategies." },
+
+  { term: "Strategic Pyramid", abbr: "", cat: "strategy", emoji: "🔺", def: "A visual hierarchy showing how an organization's Vision flows down to Mission, then Values, then Strategy, then Action Plans. Each level makes the one above it operational.", indian: "Like a great Indian meal: the vision is the grand occasion (wedding feast), the mission is the menu, strategy is the recipes, action plan is today's kitchen schedule.", example: "Vision: World's most loved EV brand. Mission: Make EVs accessible to every Indian. Strategy: Launch ₹5 lakh EV. Action Plan: Source battery vendors, set up dealerships, run awareness campaigns.", protip: "If your action plan doesn't ladder up to your vision, you're busy but not strategic." },
+
+  { term: "Strategy", abbr: "", cat: "strategy", emoji: "♟️", def: "The set of choices and trade-offs a company makes to achieve a competitive advantage and its long-term goals. Strategy is about WHAT you choose to do - and what you deliberately choose NOT to do.", indian: "Jio's strategy was brilliantly simple: price data at almost zero to capture the entire Indian market, then monetize services. Disruption through strategy.", example: "Tesla's strategy: Start with expensive, desirable EVs → use profits to develop cheaper models → dominate mass market.", protip: "Strategy without execution is a dream. Execution without strategy is a nightmare. You need both." },
+
+  { term: "SWOT", abbr: "Strengths, Weaknesses, Opportunities, Threats", cat: "tools", emoji: "🔲", def: "A classic strategic analysis framework examining internal (Strengths/Weaknesses) and external (Opportunities/Threats) factors affecting a business.", indian: "S: Strong distribution network. W: Weak digital presence. O: India's growing middle class. T: Chinese competitor entering market. Classic Indian FMCG SWOT.", example: "Amul SWOT: S-trusted brand, W-limited premium positioning, O-export markets, T-international dairy brands entering India.", protip: "Turn your SWOT into a strategy: use Strengths to capture Opportunities (SO), use Strengths to counter Threats (ST), fix Weaknesses that block Opportunities (WO)." },
+
+  // T
+  { term: "TG", abbr: "Target Group", cat: "marketing", emoji: "🎯", def: "The specific segment of people your marketing or product is designed for. Your ideal audience defined by demographics, psychographics, behavior, or needs.", indian: "Tata Nano's TG was the aspiring middle class wanting a 'family car on a scooter budget' - defined, but the product missed the emotional insight.", example: "TG for a premium yoga mat brand: urban women aged 25-40, income ₹10L+, health-conscious, Instagram-active.", protip: "Your TG is NOT 'everyone.' The more specific your TG, the more powerful your messaging." },
+
+  { term: "Touchpoints", abbr: "", cat: "design", emoji: "✋", def: "Every interaction or moment of contact between a customer and a brand - before, during, and after a purchase. Each touchpoint shapes the overall experience.", indian: "Buying a Maruti car: TV ad → dealership visit → test drive → delivery ceremony → service call → annual check-up. Each = a touchpoint.", example: "Digital touchpoints: website, app, social media, email, push notification. Physical: store, packaging, delivery, customer service call.", protip: "Audit all your touchpoints. The weakest one defines your brand experience, not the strongest." },
+
+  // U
+  { term: "User", abbr: "", cat: "design", emoji: "🖐️", def: "The person who actually uses your product or service. May differ from the customer (who pays). Human-centered design always starts with the user.", indian: "In India, the user of household products is often the homemaker, but the customer (buyer) might be the working spouse. Separate insights needed for each.", example: "A school buys an ed-tech subscription (customer = school principal). But the user is a 10-year-old student.", protip: "Design for the user. Sell to the customer. These are often different people needing different messages." },
+
+  // V
+  { term: "Values", abbr: "", cat: "strategy", emoji: "💎", def: "The core beliefs and principles that guide how an organization behaves, makes decisions, and treats people. The non-negotiables of your culture.", indian: "Tata Group's founding values (integrity, community welfare) have shaped decisions for 150+ years. That's values-led business.", example: "Patagonia's value: Environmental responsibility. They even tell customers to buy less. That's living your values.", protip: "Values only matter if they change behavior when it's inconvenient to follow them. Easy values cost nothing." },
+
+  { term: "Value Proposition Canvas", abbr: "VPC", cat: "tools", emoji: "🎨", def: "A tool that maps the fit between what your product offers (Value Map) and what your customer needs (Customer Profile). Ensures you're solving real pains and creating real gains.", indian: "Most Indian startups skip the VPC and build what they THINK customers want. The VPC forces you to validate before you build.", example: "Customer Job: Commute to work. Pain: Traffic, unreliable rickshaws. VPC helps Ola map its value to these exact pains.", protip: "Focus on relieving the most severe pains and creating the most essential gains - not all of them equally." },
+
+  { term: "Values Proposition", abbr: "", cat: "marketing", emoji: "💡", def: "A clear statement that explains how your product solves a problem, what benefits it delivers, and why a customer should choose you over competitors.", indian: "Dettol's value proposition in one line: 'Be 100% sure.' It tells you what you get (protection), and why Dettol (certainty).", example: "Slack: 'Where work happens.' Crisp, clear, benefit-led value proposition.", protip: "Test your value proposition by asking: If I removed the brand name, would it still be true of only my product? If yes, you have a strong VP." },
+
+  { term: "Vendor", abbr: "", cat: "org", emoji: "🏭", def: "A company or individual that supplies goods or services to another business. Also called a supplier. Part of your value chain upstream.", indian: "In India, vendor relationships are deeply personal - built on trust, long-term partnerships, and sometimes chai. Vendor management is a real skill.", example: "A restaurant's vendors: vegetable supplier, dairy farm, packaging company, cleaning services provider.", protip: "Never be entirely dependent on a single vendor. Dual sourcing protects your business from supply shocks." },
+
+  { term: "Viability", abbr: "", cat: "design", emoji: "💰", def: "Can it make money? Viability asks whether a business idea or product can generate sustainable revenue and profit. It's the business lens in the innovation triangle.", indian: "Many Indian social enterprises are highly desirable and feasible but struggle with viability - the dreaded 'break-even' challenge.", example: "A solar lantern for rural India: highly desirable, technically feasible - but viable only if manufacturing cost stays below ₹300.", protip: "Test viability early with simple unit economics: Cost to build < Price customer will pay. That's the first viability test." },
+
+  { term: "Vision", abbr: "", cat: "strategy", emoji: "🌟", def: "An aspirational, long-term description of what an organization wants to become or achieve in the future. It's your north star - inspiring, ambitious, and directional.", indian: "ISRO's vision 'to harness space technology for national development while pursuing space science research' drives everything from Mangalyaan to Chandrayaan.", example: "LinkedIn's vision: 'Create economic opportunity for every member of the global workforce.'", protip: "A vision should be slightly uncomfortable - if it's easily achievable, it's not a vision, it's a quarterly target." },
+];
+
+// Sort alphabetically
+TERMS.sort((a, b) => a.term.localeCompare(b.term));
+
+const CAT_LABELS = {
+  strategy: "Strategy", design: "Design", innovation: "Innovation", org: "Org",
+  finance: "Finance", marketing: "Marketing", tools: "Tools", basics: "Basics"
+};
+
+let activeFilter = "all";
+let searchQuery = "";
+let saved = new Set();
+
+function render() {
+  const grid = document.getElementById("mainGrid");
+  const noResults = document.getElementById("noResults");
+  grid.innerHTML = "";
+
+  const filtered = TERMS.filter(t => {
+    const matchCat = activeFilter === "all" || t.cat === activeFilter;
+    const q = searchQuery.toLowerCase();
+    const matchSearch = !q || 
+      t.term.toLowerCase().includes(q) || 
+      (t.abbr && t.abbr.toLowerCase().includes(q)) ||
+      t.def.toLowerCase().includes(q) ||
+      t.cat.toLowerCase().includes(q);
+    return matchCat && matchSearch;
+  });
+
+  document.getElementById("resultsCount").textContent = `${filtered.length} terms`;
+  document.getElementById("totalCount").textContent = TERMS.length;
+
+  if (filtered.length === 0) {
+    noResults.classList.add("show");
+    return;
+  }
+  noResults.classList.remove("show");
+
+  // Group by first letter
+  const grouped = {};
+  filtered.forEach(t => {
+    const letter = t.term[0].toUpperCase();
+    if (!grouped[letter]) grouped[letter] = [];
+    grouped[letter].push(t);
+  });
+
+  Object.keys(grouped).sort().forEach(letter => {
+    const section = document.createElement("div");
+    section.className = "alpha-section";
+    section.id = `section-${letter}`;
+
+    section.innerHTML = `
+      <div class="alpha-header">
+        <div class="alpha-letter">${letter}</div>
+        <div class="alpha-line"></div>
+      </div>
+      <div class="cards-grid" id="grid-${letter}"></div>
+    `;
+    grid.appendChild(section);
+
+    const cardGrid = section.querySelector(`#grid-${letter}`);
+    grouped[letter].forEach((t, i) => {
+      const card = document.createElement("div");
+      card.className = `card cat-${t.cat}`;
+      card.style.animationDelay = `${i * 0.05}s`;
+
+      card.innerHTML = `
+        <div class="card-stripe"></div>
+        <button class="bookmark-btn ${saved.has(t.term) ? 'saved' : ''}" data-term="${t.term}" title="Bookmark">
+          ${saved.has(t.term) ? '🔖' : '🏷️'}
+        </button>
+        <div class="card-top">
+          <div class="card-emoji">${t.emoji}</div>
+          <div class="card-title-wrap">
+            <div class="card-term">${t.term}</div>
+            ${t.abbr ? `<div class="card-abbr">${t.abbr}</div>` : ''}
+          </div>
+          <div class="card-cat">${CAT_LABELS[t.cat]}</div>
+        </div>
+        <div class="card-body">
+          <div class="card-def">${t.def}</div>
+          ${t.indian ? `<div class="card-indian"><strong>🇮🇳 India Context</strong>${t.indian}</div>` : ''}
+          ${t.example ? `<div class="card-example"><strong>📌 Example</strong>${t.example}</div>` : ''}
+          ${t.protip ? `<div class="card-protip"><strong>⚡ Pro Tip</strong>${t.protip}</div>` : ''}
+        </div>
+      `;
+      cardGrid.appendChild(card);
+    });
+  });
+
+  // Bookmark handlers
+  document.querySelectorAll('.bookmark-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const term = btn.dataset.term;
+      if (saved.has(term)) { saved.delete(term); btn.textContent = '🏷️'; btn.classList.remove('saved'); }
+      else { saved.add(term); btn.textContent = '🔖'; btn.classList.add('saved'); }
+    });
+  });
+
+  buildAlphaNav(grouped);
+}
+
+function buildAlphaNav(grouped) {
+  const nav = document.getElementById("alphNav");
+  nav.innerHTML = "";
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").forEach(letter => {
+    const btn = document.createElement("button");
+    btn.className = `alpha-btn ${grouped && grouped[letter] ? 'has-items' : ''}`;
+    btn.textContent = letter;
+    btn.addEventListener('click', () => {
+      const sec = document.getElementById(`section-${letter}`);
+      if (sec) sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    nav.appendChild(btn);
+  });
+}
+
+document.getElementById("search").addEventListener("input", (e) => {
+  searchQuery = e.target.value;
+  render();
+});
+
+document.querySelectorAll(".filter-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+render();
+</script>
+</body>
+</html>
